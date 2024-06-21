@@ -9,7 +9,7 @@ if settings.get("warpName") == nil or settings.get("warpName") == "" or settings
 		type = "string"
 	})
 
-	local newName = textFunctions.prompt("Enter a warp zone name:")
+	local newName = string.lower(textFunctions.prompt("Enter a warp zone name:"))
 	settings.set("warpName", newName)
 
 	settings.save(".settings")
