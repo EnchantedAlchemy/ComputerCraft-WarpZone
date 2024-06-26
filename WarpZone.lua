@@ -23,7 +23,7 @@ rednet.host("warp_zone", settings.get("warpName"))
 while true do
 
 	local id, warpSide = rednet.receive("warp_central")
-	if string.lower(warpSide) == "reboot" then
+	if warpSide == "reboot" then
 		os.reboot()
 		return
 	else
