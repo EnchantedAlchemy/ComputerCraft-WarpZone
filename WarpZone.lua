@@ -23,8 +23,13 @@ rednet.host("warp_zone", settings.get("warpName"))
 while true do
 
 	local id, warpSide = rednet.receive("warp_central")
-	redstone.setOutput(warpSide, true)
-	os.sleep()
-	redstone.setOutput(warpSide, false)
+	if string.lower(warpSide) == "reboot" then
+		os.reboot()
+		return
+	else
+		redstone.setOutput(warpSide, true)
+		os.sleep()
+		redstone.setOutput(warpSide, false)
+	end
 
 end
