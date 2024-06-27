@@ -5,6 +5,7 @@ Modem
 --]]
 
 local textFunctions = require("utilities/textFunctions")
+local warpSides = {EnchantedAlchemy = "front", garbloni = "left", LogHammm = "back", ToomtHunger = "right"}
 
 settings.load(".settings")
 if settings.get("warpName") == nil or settings.get("warpName") == "" or settings.get("warpName") == " " then
@@ -36,21 +37,24 @@ end
 
 while true do
 
-	local id, warpSide = rednet.receive("warp_central")
-	if warpSide == "reboot" then
+	local id, argument = rednet.receive("warp_central")
+	if argument == "reboot" then
 		os.reboot()
-	else
+	elseif warpSides[argument] ~= nil then
+
+		local playerSide = warpSides[argument]
 		if pcall(function() 
 		
-			redstone.setOutput(warpSide, true)
+			redstone.setOutput(playerSide, true)
 			os.sleep()
-			redstone.setOutput(warpSide, false)
+			redstone.setOutput(playerSide, false)
 		
 		end) then
 			--Worked
 		else
 			--Didn't
 		end
+
 	end
 
 end
