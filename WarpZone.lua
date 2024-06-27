@@ -27,8 +27,6 @@ print(settings.get("warpName"))
 peripheral.find("modem", rednet.open)
 rednet.host("warp_zone", settings.get("warpName"))
 
-local chatBoxName = "Warp Zone: "..settings.get("warpName")
-
 local function activateWarp(side)
 
 	redstone.setOutput(warpSide, true)
@@ -53,20 +51,10 @@ while true do
 		
 		end) then
 			--Worked
-			local chatMessage = {
-				{text = "(Private) ", color = "gray", italic = true},
-				{text = "Warp Zone Activated.", color = "green", italic = false, bold = true}
-			}
-			chatMessage = textutils.serializeJSON(chatMessage)
-			chatBox.sendFormattedMessageToPlayer(chatMessage, player, chatBoxName)
+
 		else
 			--Didn't
-			local chatMessage = {
-				{text = "(Private) ", color = "gray", italic = true},
-				{text = "Warp Zone Error.", color = "red", italic = false, bold = true}
-			}
-			chatMessage = textutils.serializeJSON(chatMessage)
-			chatBox.sendFormattedMessageToPlayer(chatMessage, player, chatBoxName)
+
 		end
 
 	end
