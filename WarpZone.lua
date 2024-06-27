@@ -51,10 +51,10 @@ while true do
 		
 		end) then
 			--Worked
-
+			printError("test")
 		else
 			--Didn't
-
+			printError("frog")
 		end
 
 	end
