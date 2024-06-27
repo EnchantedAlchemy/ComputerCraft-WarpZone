@@ -26,15 +26,31 @@ print(settings.get("warpName"))
 peripheral.find("modem", rednet.open)
 rednet.host("warp_zone", settings.get("warpName"))
 
+local function activateWarp(side)
+
+	redstone.setOutput(warpSide, true)
+	os.sleep()
+	redstone.setOutput(warpSide, false)
+
+end
+
 while true do
 
 	local id, warpSide = rednet.receive("warp_central")
 	if warpSide == "reboot" then
 		os.reboot()
 	else
-		redstone.setOutput(warpSide, true)
-		os.sleep()
-		redstone.setOutput(warpSide, false)
+		if pcall(function() 
+		
+			redstone.setOutput(warpSide, true)
+			os.sleep()
+			redstone.setOutput(warpSide, false)
+		
+		end) then
+			--Worked
+		else
+			--Didn't
+		end
 	end
 
 end
