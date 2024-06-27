@@ -58,6 +58,8 @@ while true do
 
 	else
 		print("grrr")
+		print(argument)
+		print(warpSides[argument])
 	end
 
 end
