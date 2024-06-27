@@ -42,6 +42,7 @@ while true do
 		os.reboot()
 	elseif warpSides[argument] ~= nil then
 
+		print("rarg")
 		local playerSide = warpSides[argument]
 		if pcall(function() 
 		
@@ -55,6 +56,8 @@ while true do
 			--Didn't
 		end
 
+	else
+		print("grrr")
 	end
 
 end
