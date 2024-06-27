@@ -25,7 +25,6 @@ while true do
 	local id, warpSide = rednet.receive("warp_central")
 	if warpSide == "reboot" then
 		os.reboot()
-		return
 	else
 		redstone.setOutput(warpSide, true)
 		os.sleep()
