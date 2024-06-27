@@ -51,10 +51,9 @@ while true do
 		
 		end) then
 			--Worked
-			printError("test")
 		else
 			--Didn't
-			printError("frog")
+			printError("Warp attempt failed.")
 		end
 
 	end
