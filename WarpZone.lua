@@ -1,3 +1,9 @@
+--[[
+Requires:
+********
+Modem
+--]]
+
 local textFunctions = require("utilities/textFunctions")
 
 settings.load(".settings")
